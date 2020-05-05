@@ -16,33 +16,31 @@ const ItemList = (props) => {
 			<h1>Welcome to Smurfs Village</h1>
 			{console.log("props1", props)}
 
-			{/* <div>
-				{props.item.map((smurf) => (<h4 key={smurf.id}>{smurf.name}</h4>))}
-			</div> */}
-
+            <button className='button' onClick={(e) => fetchItem(e)}>
+				Fetch Smurfs!
+			</button>
+            
 			{props.items &&
 				props.items.map((smurf) => {
 					return (
 						<div>
-							<h1>name: {smurf.name} </h1>
-							<h1>age: {smurf.age} </h1>
-							<h1>height: {smurf.height} </h1>
+							<h2>Name: {smurf.name} </h2>
+							<h3>Age: {smurf.age} </h3>
+							<h3>Height: {smurf.height} </h3>
 						</div>
 					);
 				})}
 
 			{props.error && <p>{props.error}</p>}
-			<button className='button' onClick={(e) => fetchItem(e)}>
-				Fetch Smurfs!
-			</button>
+			
 		</div>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	items: state.items,
-	error: state.error,
-	isFetching: state.isFetching,
+	items: state.fetchReducer.item,
+	error: state.fetchReducer.error,
+	isFetching: state.fetchReducer.isFetching,
 });
 
-export default connect(mapStateToProps, { fetchItems})(ItemList);
+export default connect(mapStateToProps, { fetchItems })(ItemList);

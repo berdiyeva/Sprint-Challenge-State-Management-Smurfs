@@ -6,6 +6,10 @@ import { fetchItems, addItem } from "../actions";
 import CreateSmurf from "./CreateSmurf";
 
 function App() {
+	React.useEffect(() => {
+		fetchItems();
+	});
+
 	return (
 		<div>
 			<CreateSmurf />
@@ -16,7 +20,7 @@ function App() {
 
 const mapStateToProps = (state) => {
 	return {
-		item: state.item,
+		items: state.items,
 		error: state.error,
 		fetchingItems: state.fetchingItems,
 	};
