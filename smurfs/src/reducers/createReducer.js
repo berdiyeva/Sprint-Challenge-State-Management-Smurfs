@@ -17,6 +17,16 @@ export const createReducer = (state = initialStateCreate, action) => {
 				...state,
 				items: action.payload,
 			};
+		case ADDED_ITEM:
+			return {
+				...state,
+				items: action.payload,
+			};
+		case ADD_ITEM_FAILED:
+			return {
+				...state,
+				error: action.payload,
+			};
 		default:
 			return state;
 	}

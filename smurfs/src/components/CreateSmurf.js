@@ -14,46 +14,48 @@ const CreateSmurf = (props) => {
 	};
 
 	const handleSubmit = (event) => {
-        console.log('new smurf', newSmurf)
+		console.log("new smurf", newSmurf);
 		event.preventDefault();
 		props.addItem(newSmurf);
+		window.location.reload();
 	};
 
 	const resetForm = () => {
 		setNewSmurf(initialState);
 	};
 
-	return ( 
-    <div className='createForm'>
-        <form onSubmit={handleSubmit}>
-			<input
-				type='text'
-				name='name'
-				placeholder='Name'
-				onChange={handleChange}
-				value={newSmurf.name} //props.name
-			/>
-            <input
-				type='text'
-				name='age'
-				placeholder='Age'
-				onChange={handleChange}
-				value={newSmurf.age}
-			/>
-            <input
-				type='text'
-				name='height'
-				placeholder='Height in cm'
-				onChange={handleChange}
-				value={newSmurf.height}
-			/>
-			<button type='submit'>Create</button>
-			<button type='button' onClick={resetForm}>
-				Reset
-			</button>
-		</form>
-    </div>
-		
+	return (
+		<div className='createForm'>
+			<form onSubmit={handleSubmit}>
+				<input
+					type='text'
+					name='name'
+					placeholder='Name'
+					onChange={handleChange}
+					value={newSmurf.name} //props.name
+				/>
+				<input
+					type='text'
+					name='age'
+					placeholder='Age'
+					onChange={handleChange}
+					value={newSmurf.age}
+				/>
+				<input
+					type='text'
+					name='height'
+					placeholder='Height in cm'
+					onChange={handleChange}
+					value={newSmurf.height}
+				/>
+				<button type='submit' onClick={handleSubmit}>
+					Create
+				</button>
+				<button type='button' onClick={resetForm}>
+					Reset
+				</button>
+			</form>
+		</div>
 	);
 };
 const mapStateToProps = (state) => ({
